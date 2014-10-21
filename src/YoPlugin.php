@@ -1,6 +1,10 @@
 <?php
 namespace Peridot\Plugin\Yo;
 
+use Evenement\EventEmitterInterface;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
 class YoPlugin
 {
     const BEHAVIOR_ON_FAIL = 1;
@@ -26,9 +30,10 @@ class YoPlugin
     /**
      * @param $exitCode
      */
-    public function onPeridotEnd($exitCode)
+    public function onPeridotEnd($exitCode, InputInterface $input, OutputInterface $output)
     {
         $hasFailed = $exitCode > 0;
+        $output->writeln("  <comment>YO! Happening now</comment>");
         switch ($this->behavior) {
             case static::BEHAVIOR_ON_FAIL:
                 if ($hasFailed) {
@@ -52,5 +57,25 @@ class YoPlugin
     public function setBehavior($behavior)
     {
         $this->behavior = $behavior;
+    }
+
+    /**
+     * Register the Yo plugin
+     *
+     * @param EventEmitterInterface $emitter
+     * @param $token
+     * @param array $users
+     * @param null $link
+     * @return static
+     */
+    public static function register(EventEmitterInterface $emitter, $token, array $users, $link = null)
+    {
+        $request = new Request($token, $users);
+        if (!is_null($link)) {
+            $request->setLink($link);
+        }
+        $plugin = new static($request);
+        $emitter->on('peridot.end', [$plugin, 'onPeridotEnd']);
+        return $plugin;
     }
 }
