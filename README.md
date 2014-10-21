@@ -1,6 +1,8 @@
 Peridot Yo Plugin
 =================
 
+[![Build Status](https://travis-ci.org/peridot-php/peridot-yo-plugin.png)](https://travis-ci.org/peridot-php/peridot-yo-plugin) [![HHVM Status](http://hhvm.h4cc.de/badge/peridot-php/peridot-yo-plugin)](http://hhvm.h4cc.de/package/peridot-php/peridot-yo-plugin)
+
 Notify the right people when tests pass or fail, via the world's simplest messaging service [Yo](http://www.justyo.co/)
 
 This is a plugin for PHP's event driven testing framework [Peridot](http://peridot-php.github.io/)
