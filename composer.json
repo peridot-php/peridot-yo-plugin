@@ -1,0 +1,14 @@
+{
+    "name": "peridot-php/peridot-yo-plugin",
+    "description": "\"YO! The right people when a test run finishes\"",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brian Scaturro",
+            "email": "scaturrob@gmail.com"
+        }
+    ],
+    "require": {
+        "peridot-php/peridot": "1.0.0"
+    }
+}
