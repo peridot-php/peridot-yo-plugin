@@ -4,6 +4,11 @@ namespace Peridot\Plugin\Yo;
 class Request 
 {
     /**
+     * Yo api endpoint
+     */
+    const URL = 'http://api.justyo.co/yo/';
+
+    /**
      * @var string
      */
     protected $token;
@@ -45,6 +50,18 @@ class Request
     public function setLink($link)
     {
         $this->link = $link;
+    }
+
+    /**
+     * Yo!
+     */
+    public function yo()
+    {
+        $optionSet = $this->getContextOptions();
+        foreach ($optionSet as $options) {
+            $context = stream_context_create($options);
+            file_get_contents(static::URL, false, $context);
+        }
     }
 
     /**
