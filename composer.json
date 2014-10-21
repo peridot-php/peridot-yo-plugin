@@ -10,5 +10,10 @@
     ],
     "require": {
         "peridot-php/peridot": "1.0.0"
+    },
+    "autoload": {
+      "psr-4": {
+        "Peridot\\Plugin\\Yo\\": "src/"
+      }
     }
 }
