@@ -88,15 +88,27 @@ class Request
      */
     public function getQuery($user)
     {
+        $data = $this->getData($user);
+        $query = http_build_query($data);
+        return $query;
+    }
+
+    /**
+     * @param $user
+     * @return array
+     */
+    public function getData($user)
+    {
         $data = ['api_token' => $this->token, 'username' => $user];
         if (isset($this->link)) {
             if (is_callable($this->link)) {
                 $data['link'] = call_user_func($this->link);
+                return $data;
             } else {
                 $data['link'] = $this->link;
+                return $data;
             }
         }
-        $query = http_build_query($data);
-        return $query;
+        return $data;
     }
 } 

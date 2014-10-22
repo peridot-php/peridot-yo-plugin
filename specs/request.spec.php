@@ -65,4 +65,12 @@ describe("Request", function() {
         });
     });
 
+    describe("->getData()", function() {
+       it('should return an array of data for a yo request', function() {
+           $data = $this->request->getData('brian');
+           $expected = ['api_token' => $this->token, 'username' => 'brian'];
+           assert($data == $expected, "data should contain token and username");
+       });
+    });
+
 });
