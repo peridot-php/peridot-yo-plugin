@@ -1,12 +1,14 @@
 <?php
 namespace Peridot\Plugin\Yo;
 
-class Request 
+use GuzzleHttp\Client;
+
+class Request
 {
     /**
      * Yo api endpoint
      */
-    const URL = 'http://api.justyo.co/yo/';
+    const URL = 'http://api.justyo.co';
 
     /**
      * @var string
@@ -57,10 +59,13 @@ class Request
      */
     public function yo()
     {
-        $optionSet = $this->getContextOptions();
-        foreach ($optionSet as $options) {
-            $context = stream_context_create($options);
-            file_get_contents(static::URL, false, $context);
+        $client = new Client(['base_url' => static::URL]);
+        foreach($this->users as $user) {
+            $client->post('/yo', [
+                'headers' => ["Content-type" => "application/x-www-form-urlencoded\r\n"],
+                'body' => $this->getQuery($user),
+                'future' => true
+            ]);
         }
     }
 
@@ -71,13 +76,13 @@ class Request
     {
         $options = [];
         foreach ($this->users as $user) {
-            $options[] = array(
-                'http' => array(
+            $options[] = [
+                'http' => [
                     'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
                     'method'  => 'POST',
                     'content' => $this->getQuery($user)
-                )
-            );
+                ]
+            ];
         }
         return $options;
     }
