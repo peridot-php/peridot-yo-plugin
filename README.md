@@ -9,6 +9,12 @@ This is a plugin for PHP's event driven testing framework [Peridot](http://perid
 
 ##Usage
 
+We recommend adding this plugin to your project via composer:
+
+```
+$ composer require peridot-php/peridot-yo-plugin:~1.0
+```
+
 Using the plugin is easy via your [peridot.php](http://peridot-php.github.io/#plugins) file:
 
 ```php
