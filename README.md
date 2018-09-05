@@ -7,7 +7,7 @@ Notify the right people when tests pass or fail, via the world's simplest messag
 
 This is a plugin for PHP's event driven testing framework [Peridot](http://peridot-php.github.io/)
 
-##Usage
+## Usage
 
 We recommend adding this plugin to your project via composer:
 
@@ -33,7 +33,7 @@ return function (EventEmitterInterface $emitter) {
 };
 ```
 
-##Behaviors
+## Behaviors
 This plugin has a few behaviors so you can configure when you want to receive Yo notifications. These all
 exist as constants on the `YoPlugin` class, and can be passed to the plugin like so:
 
@@ -48,19 +48,19 @@ return function (EventEmitterInterface $emitter) {
 };
 ```
 
-###BEHAVIOR_ON_PASS
+### BEHAVIOR_ON_PASS
 
 Receive Yo notifications when the test suite passes.
 
-###BEHAVIOR_ON_FAIL
+### BEHAVIOR_ON_FAIL
 
 Receive Yo notifications when the test suite fails. This is the default behavior.
 
-###BEHAVIOR_ALWAYS
+### BEHAVIOR_ALWAYS
 
 Receive Yo notifications when the test suite finishes running.
 
-##Running tests
+## Running tests
 
 Tests were written using [Peridot](http://peridot-php.github.io/). You can run them like so:
 
@@ -68,6 +68,6 @@ Tests were written using [Peridot](http://peridot-php.github.io/). You can run t
 $ vendor/bin/peridot specs/
 ```
 
-##Contributing
+## Contributing
 
 Pull requests, issues, and feedback are of course always welcome.
